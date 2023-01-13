@@ -1,0 +1,8 @@
+{
+    "name": "Flugzeugwartung",
+    "dockerComposeFile": "./docker-compose.yml",
+    "service": "dev",
+    "workspaceFolder": "/workspace",
+    "shutdownAction": "stopCompose",
+    "postStartCommand": "pip install virtualenv && virtualenv -p python3 venv &&source /workspace/venv/bin"
+}

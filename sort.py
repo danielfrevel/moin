@@ -22,4 +22,4 @@ class Sort:
 print(Sort.sort(dieListe))
 
 print(Sort.isElementInList(dieListe, 42))
-                        
+                    

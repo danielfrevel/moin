@@ -1,0 +1,38 @@
+version: "3.5"
+
+services:
+  dev:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: /bin/sh -c "sleep infinity"
+    volumes:
+      - ..:/workspace
+    depends_on:
+      - moin-db
+    networks:
+      - moin-dev
+
+  moin-db:
+    build:
+      context: .
+      dockerfile: dockerfile_db
+    user: root
+    volumes:
+      - ./_volumes/sqlsystem:/var/opt/mssql/
+      - ./_volumes/sqldata:/var/opt/sqlserver/data
+      - ./_volumes/sqllog:/var/opt/sqlserver/log
+      - ./_volumes/sqlbackup:/var/opt/sqlserver/backup
+    ports:
+      - 7890:1433
+    networks:
+      - moin-dev
+    environment:
+      SA_PASSWORD: "Vmware##"
+      ACCEPT_EULA: "Y"
+      MSSQL_DATA_DIR: "/var/opt/sqlserver/data"
+      MSSQL_LOG_DIR: "/var/opt/sqlserver/log"
+      MSSQL_BACKUP_DIR: "/var/opt/sqlserver/backup"
+
+networks:
+  moin-dev:
