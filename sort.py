@@ -2,8 +2,6 @@ dieListe=[19,29,1,42,12,194,19412,85,10,5,23]
 
 class Sort:
     def sort(list: list) -> list:  
-        kekw = 1 if 1==1 else 2   
-                
         for i in range(len(list)):
             for j in range(len(list)):
                 if list[i] < list[j]:
@@ -21,9 +19,7 @@ class Sort:
         if Sort.find(list, item) != None: return True
         return False
 
-
 print(Sort.sort(dieListe))
 
 print(Sort.isElementInList(dieListe, 42))
-                    
-
+                        
